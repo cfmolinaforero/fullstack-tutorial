@@ -1,26 +1,24 @@
 import {
    ApolloClient,
    InMemoryCache,
-   gql,
+   // gql,
    NormalizedCacheObject,
+   ApolloProvider,
 } from '@apollo/client';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Pages from './pages';
+import injectStyles from './styles';
 
 const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
    uri: 'http://localhost:4000/',
    cache: new InMemoryCache(),
 });
 
-client
-   .query({
-      query: gql`
-         query TestQuery {
-            launch(id: 56) {
-               id
-               mission {
-                  name
-               }
-            }
-         }
-      `,
-   })
-   .then((result) => console.log(result));
+injectStyles();
+ReactDOM.render(
+   <ApolloProvider client={client}>
+      <Pages></Pages>
+   </ApolloProvider>,
+   document.getElementById('root')
+);
