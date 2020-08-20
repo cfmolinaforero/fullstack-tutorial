@@ -17,6 +17,9 @@ const server = new ApolloServer({
       launchAPI: new LaunchAPI(),
       userAPI: new UserAPI({ store }),
    }),
+   engine: {
+      reportSchema: true,
+   },
 });
 
 server.listen().then(({ url }) => {
