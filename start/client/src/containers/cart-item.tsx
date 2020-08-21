@@ -2,7 +2,7 @@ import React from 'react';
 import { gql, useQuery } from '@apollo/client';
 
 import LaunchTile from '../components/launch-tile';
-import { LAUNCH_TILE_DATA } from '../pages/launches';
+import { GET_LAUNCHES } from '../pages/launches';
 import * as LaunchDetailTypes from '../pages/__generated__/LaunchDetails';
 
 export const GET_LAUNCH = gql`
@@ -11,7 +11,7 @@ export const GET_LAUNCH = gql`
       ...LaunchTile
     }
   }
-  ${LAUNCH_TILE_DATA}
+  ${GET_LAUNCHES}
 `;
 
 interface CartItemProps extends LaunchDetailTypes.LaunchDetailsVariables {}
